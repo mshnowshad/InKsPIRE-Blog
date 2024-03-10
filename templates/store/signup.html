@@ -1,0 +1,40 @@
+{% extends "store/link.html" %}
+{%load static %}
+
+    {% block content %}
+
+
+
+
+    <section class="form__section">
+      <div class="container form__section-container">
+        <a href="/">
+        <h2>Sign up</h2></a>
+        <div class="alert__message error">
+          <p>This is an error message</p>
+        </div>
+        <form action="">
+          <div class="form__control">
+            <label for="avatar">User Avatar</label>
+            <input type="file" name="" id="avatar" />
+          </div>
+
+          <input type="text" placeholder="First Name" />
+          <input type="text" placeholder="Last Name" />
+          <input type="text" placeholder="Username" />
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Create Password" />
+          <input type="password" placeholder="Confirm Password" />
+          
+          <button type="submit" class="btn">Sign Up</button>
+          <small
+            >Already have an account? <a href="{%url 'signin'%}">Sign In</a><br/>
+            <a href="{%url 'home'%}">Back home</a></small
+          >
+        </form>
+      </div>
+    </section>
+
+
+
+        {% endblock content %}
