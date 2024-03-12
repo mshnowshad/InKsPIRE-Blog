@@ -1,9 +1,9 @@
 
 
 
-## model add 
+## model add (complete)
 
-## product in the home page
+## product in the home page (complete)
 
 ## product view
 
