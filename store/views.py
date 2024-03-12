@@ -1,19 +1,23 @@
+
 from django.shortcuts import render
+from.models import Post
+
 
 # Create your views here.
 
 
 
 def home(request):
-	return render(request,'store/index.html')
-
+	posts = Post.objects.all()
+	return render(request,'store/index.html',{'posts':posts})
 
 
 def about(request):
 	return render(request,'store/about.html')
 
 def blog(request):
-	return render(request,'store/blog.html')
+	posts = Post.objects.all()
+	return render(request,'store/blog.html',{'posts':posts})
 
 
 def contact(request):

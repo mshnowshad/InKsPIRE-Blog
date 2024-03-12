@@ -1,0 +1,26 @@
+
+
+
+## model add 
+
+## product in the home page
+
+## product view
+
+## category wish
+
+## search opeation
+
+## user profile  
+
+## user add post in blog
+
+## user delete post
+
+## post comment
+
+## post comment replay
+
+
+
+
