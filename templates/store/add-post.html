@@ -1,10 +1,10 @@
 {% extends "link.html" %}
 {% load static %}
 
+
 {% block content %}
     {% include 'navbar.html' %}
-    <!-- main html tag start -->
-    <main>
+    <!-- <main>
         <section class="form__section">
             <div class="container form__section-container">
                 <h2>Add Post</h2>
@@ -16,8 +16,27 @@
                 </form>
             </div>
         </section>
+    </main> -->
+
+
+    <main>
+      <section class="form__section">
+        <div class="container form__section-container">
+          <h1>Add Post</h1>
+          <br>
+          
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="btn">Add Post</button>
+          </form>
+        </div>
+      </section>
     </main>
-    <!-- main html tag end -->
+
+    
+
+    
 {% endblock content %}
 
 

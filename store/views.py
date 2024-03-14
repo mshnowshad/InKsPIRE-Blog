@@ -5,17 +5,16 @@ from django.contrib import messages
 
 def add_post(request):
     if request.method == 'POST':
-        form = PostModelForm(request.POST)
+        form = PostModelForm(request.POST,request.FILES)
         if form.is_valid():
             instance = form.save(commit=False)
-            if request.user.is_authenticated:
-                print("Authenticated user:", request.user)  # Debug statement
+            if request.user.is_authenticated:  # Debug statement
                 instance.author = request.user
                 instance.save()
                 messages.success(request, 'Post added successfully')
                 return redirect('home')
             else:
-                print("User is not authenticated")  # Debug statement
+                return redirect('signin')  # Debug statement
     else:
         form = PostModelForm()
 

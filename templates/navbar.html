@@ -17,7 +17,7 @@
 
  {% if user.is_authenticated %}
               <div class="avatar">
-                <img src="{% static 'images/avatar1.jpg' %}" />
+                <img src="{% static 'images/Admin.jpg' %}" />
               </div>
               <ul>
                 <li><a href="#">Dashboard</a></li>
@@ -29,7 +29,7 @@
 
  {% else %}
               <div class="avatar">
-                <img src="{% static 'images/avatar1.jpg' %}" />
+                <img src="{% static 'images/Admin.jpg' %}" />
               </div>
               <ul>
                 <li><a href="{%url 'signup'%}">SignUp</a></li>

@@ -34,7 +34,7 @@
             </p>
             <div class="post__author">
               <div class="post__author-avatar">
-                <img src="{%static 'images/avatar2.jpg'%}" alt="" />
+                <img src="{%static 'images/Admin.jpg'%}" alt="" />
               </div>
               <div class="post__author-info">
                 <h5>By: Jane Doe</h5>
@@ -67,10 +67,10 @@
           {% for post in posts %}
           <article class="post">
             <div class="post__thumbnail">
-              <img src="{%static 'images/blog1.jpg'%}" alt="" />
+              <img src=" {{ post.image.url }} " alt="" />
             </div>
             <div class="post__info">
-              <a href="" class="category__button">Art</a>
+              <a href="" class="category__button">{{post.category}}</a>
               <h3 class="post__title">
                 <a href="/"
                   >{{post.title|slice:':30'}} ...</a
@@ -82,11 +82,11 @@
             </div>
             <div class="post__author">
               <div class="post__author-avatar">
-                <img src="{%static 'images/avatar1.jpg'%}" alt="" />
+                <img src="{%static 'images/Admin.jpg'%}" alt="" />
               </div>
               <div class="post__author-info">
                 <h5>By: Dr.Dre</h5>
-                <small>13 Mar 2024</small>
+                <small>{{post.published_in}}</small>
               </div>
             </div>
           </article>
