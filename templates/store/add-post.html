@@ -1,38 +1,23 @@
-{% extends "store/link.html" %}
-{%load static %}
+{% extends "link.html" %}
+{% load static %}
 
-    {% block content %}
-        {% include 'store/navbar.html' %}
+{% block content %}
+    {% include 'navbar.html' %}
     <!-- main html tag start -->
     <main>
-      <section class="form__section">
-        <div class="container form__section-container">
-          <h2>Add Post</h2>
-          <div class="alert__message error">
-            <p>This is an error message</p>
-          </div>
-          <form action="" enctype="multipart/form-data">
-            <input type="text" placeholder="Title" />
-            <select>
-              <option value="1">Travel</option>
-              <option value="1">Art</option>
-              <option value="1">Science & Technology</option>
-              <option value="1">Music</option>
-              <option value="1">Food</option>
-              <option value="1">wild Life</option>
-            </select>
-            <textarea rows="10" placeholder="Body"></textarea>
-            <div class="form__control">
-              <input type="checkbox" name="" id="is_featured" />
-              <label for="is_featured" checked>Featured</label>
+        <section class="form__section">
+            <div class="container form__section-container">
+                <h2>Add Post</h2>
+                <form method="POST">
+                    {% csrf_token %}
+
+                    {{ form }}
+                    <input class="btn btn-primary" type="submit" value="Post">
+                </form>
             </div>
-            <div class="form__control">
-              <label for="thumbnail">Add Thumbnail</label>
-              <input type="file" name="" id="thumbnail" />
-            </div>
-            <button type="submit" class="btn">Add Post</button>
-          </form>
-        </div>
-      </section>
+        </section>
     </main>
-    <!-- main html tag end -->    {% endblock content %}
+    <!-- main html tag end -->
+{% endblock content %}
+
+

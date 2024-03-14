@@ -1,12 +1,18 @@
-{% extends "store/link.html" %}
+{% extends "link.html" %}
 {%load static %}
 
+
+
+
     {% block content %}
-        {% include 'store/navbar.html' %}
-        <h1>test</h1>
+        {% include 'navbar.html' %}
     <!-- main html tag start -->
+
+
     <main>
       <!-- ==========================featured Start here================================ -->
+      
+
       <section class="featured">
         <div class="container featured__container">
           <div class="post__thumbnail">
@@ -41,7 +47,19 @@
       <!-- ==========================featured End here================================ -->
 
 
-
+ {% if messages %}
+  
+            {% for message in messages %}
+            <center>
+            <div class="alert alert-primary" style="color: white; margin-bottom: 2rem;margin-top:2rem;">
+              <h3>
+  {{ message }}!
+</h3>
+</div>
+               </center>
+            {% endfor %}
+      
+    {% endif %}
 
       <!-- ==========================Posts start here================================ -->
       <section class="posts">
@@ -49,10 +67,10 @@
           {% for post in posts %}
           <article class="post">
             <div class="post__thumbnail">
-              <img src="{{post.image.url}}" alt="" />
+              <img src="{%static 'images/blog1.jpg'%}" alt="" />
             </div>
             <div class="post__info">
-              <a href="" class="category__button">{{post.category}}</a>
+              <a href="" class="category__button">Art</a>
               <h3 class="post__title">
                 <a href="/"
                   >{{post.title|slice:':30'}} ...</a
@@ -67,8 +85,8 @@
                 <img src="{%static 'images/avatar1.jpg'%}" alt="" />
               </div>
               <div class="post__author-info">
-                <h5>By: {{post.author}}</h5>
-                <small>{{post.published_in}}</small>
+                <h5>By: Dr.Dre</h5>
+                <small>13 Mar 2024</small>
               </div>
             </div>
           </article>

@@ -25,13 +25,15 @@ class Category(models.Model):
 
 
 # All of our Products
-class Post(models.Model):
+class PostModel(models.Model):
     title = models.CharField(max_length=100)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     description = models.CharField(max_length=50000, default='', blank=True, null=True)
     image = models.ImageField(upload_to='post_images/')
-    published_in = models.DateField(default=timezone.now)
+    published_in = models.DateField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    class Meta:
+        ordering = ('-published_in',)
  
     def __str__(self):
         return self.title
