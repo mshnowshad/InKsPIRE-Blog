@@ -1,11 +1,32 @@
-{% extends "store/link.html" %}
+{% extends "link.html" %}
 {%load static %}
 
     {% block content %}
 
 
+    <section class="form__section">
+      <div class="container form__section-container">
+        <a href="/">
+        <h2>Sign up</h2></a>
+        <div class="alert__message error">
+          <p>This is an error message</p>
+        </div>
+        <form method="POST">
+          {% csrf_token %}
+         {{form}}
+          <button type="submit" class="btn">Sign Up</button>
+          <small
+            >Already have an account? <a href="{%url 'signin'%}">Sign In</a><br/>
+            <a href="{%url 'home'%}">Back home</a></small
+          >
+        </form>
+      </div>
+    </section>
 
 
+
+
+<!-- 
     <section class="form__section">
       <div class="container form__section-container">
         <a href="/">
@@ -33,7 +54,10 @@
           >
         </form>
       </div>
-    </section>
+    </section> -->
+
+
+
 
 
 
