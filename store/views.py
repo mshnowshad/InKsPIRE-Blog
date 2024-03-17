@@ -1,7 +1,39 @@
 from django.shortcuts import render, redirect
 from .forms import PostModelForm
-from .models import PostModel
+from .models import PostModel,Category
 from django.contrib import messages
+from django.db.models import Q
+
+
+
+# def search(request):
+#     categories = Category.objects.all()
+#     if request.method == 'POST':
+#         searched = request.POST['searched']
+#         #query the products model
+#         searched = Product.objects.filter(
+#                 Q(name__icontains=searched) | 
+#                 Q(description__icontains=searched) | 
+#                 Q(category__name__icontains=searched)
+#             )
+        
+      
+#         if not searched:
+#             messages.success(request,"Your searched product is doesn't exists ")
+#             return redirect('home')
+            
+        
+#         else:
+#             return render(request, 'search.html',{'searched':searched,'categories':categories})
+        
+#     else:
+        
+#         return render(request, 'search.html',{'categories':categories})
+
+
+
+
+
 
 def add_post(request):
     if request.method == 'POST':
@@ -35,6 +67,28 @@ def blog(request):
 	return render(request,'store/blog.html',{'posts':posts})
 
 
+
+
+def category(request,foo):
+    # postt = PostModel.objects.all()
+    # Replace hypens with space
+    # foo = foo.replace('-',' ')
+    
+    try:
+        category = Category.objects.get(name=foo)
+        posts = PostModel.objects.filter(category=category)
+        
+        return render(request,'store/category-posts.html',{'posts': posts,'category':category})
+        
+        
+    except:
+        messages.success(request,("that category does't work"))
+        return redirect('home')
+
+
+
+
+
 def contact(request):
 	return render(request,'store/contact.html')
 
@@ -60,15 +114,6 @@ def signup(request):
 	return render(request,'store/signup.html')
 
 
-
-
-
-
-# def contact(request):
-# 	return render(request,'store/contact.html')
-
-
-
-
-# def contact(request):
-# 	return render(request,'store/contact.html')
+def product(request,pk):
+    prodviews = PostModel.objects.get(id=pk)
+    return render(request,'store/productview.html',{'prodviews':prodviews})

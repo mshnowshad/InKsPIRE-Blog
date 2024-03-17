@@ -1,19 +1,17 @@
 
-
-
 ## model add (complete)
 
 ## product in the home page (complete)
 
-## product view
+## user add post in blog (complete)
+
+## product view (complete)
 
 ## category wish
 
 ## search opeation
 
 ## user profile  
-
-## user add post in blog
 
 ## user delete post
 

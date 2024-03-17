@@ -11,7 +11,7 @@
 
     <main>
       <!-- ==========================featured Start here================================ -->
-      
+       
 
       <section class="featured">
         <div class="container featured__container">
@@ -46,20 +46,25 @@
       </section>
       <!-- ==========================featured End here================================ -->
 
+      <!-- =======================message is start here ===========================-->
 
- {% if messages %}
-  
-            {% for message in messages %}
-            <center>
-            <div class="alert alert-primary" style="color: white; margin-bottom: 2rem;margin-top:2rem;">
-              <h3>
-  {{ message }}!
-</h3>
-</div>
-               </center>
-            {% endfor %}
+           {% if messages %}
       
-    {% endif %}
+                {% for message in messages %}
+                <div class="container">
+                <div class="alert__message error">
+                  <p>{{ message }}!</p>
+                </div>
+                </div>
+                {% endfor %}
+          
+            {% endif %}
+
+      <!-- =======================message is end here ===========================-->
+
+
+
+
 
       <!-- ==========================Posts start here================================ -->
       <section class="posts">
@@ -70,10 +75,10 @@
               <img src=" {{ post.image.url }} " alt="" />
             </div>
             <div class="post__info">
-              <a href="" class="category__button">{{post.category}}</a>
+              <a href="{% url 'category' 'post.category' %}" class="category__button">{{post.category}}</a>
               <h3 class="post__title">
-                <a href="/"
-                  >{{post.title|slice:':30'}} ...</a
+                <a href="{%url 'product' post.id %}"
+                  >{{post.title|slice:':36'}} ...</a
                 >
               </h3>
               <p class="post__body">
@@ -96,24 +101,42 @@
       </section>
       <!-- ==========================Posts End here================================ -->
 
+<!-- <form class="d-flex" action="{% url 'search' %}" method="POST">
+    {% csrf_token %}
+    <input class="form-control me-2" type="text" placeholder="Search"  name="searched">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+ -->
 
-
+      
       
       <!-- ==========================Category buttons start here================================ -->
       <section class="category__buttons">
+        <div class="search__bar" style="margin-bottom: 5rem;">
+           <center>
+        <h1 style="font-size:2rem;font-family:Open Sans;margin-bottom: 3rem;">How can I help you today?</h1>
+        </center>
+        <form action="{%url 'blog'%}" class="container search__bar-container">
+          <div>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" name="" placeholder="Search" style="color:white;" />
+          </div>
+          <button type="submit" class="btn">Go</button>
+        </form>
+      </div>
         <div class="container category__buttons-container">
-          <a href="" class="category__button">Art</a>
-          <a href="" class="category__button">Wild Life</a>
-          <a href="" class="category__button">Travel</a>
-          <a href="" class="category__button">Science & Technology</a>
-          <a href="" class="category__button">Food</a>
-          <a href="" class="category__button">Music</a>
-          <a href="" class="category__button">Science & Technology</a>
-          <a href="" class="category__button">Food</a>
-          <a href="" class="category__button">Music</a>
+          <a href="{% url 'category' 'Art' %}" class="category__button">Art</a>
+          <a href="{% url 'category' 'Wild Lifes' %}" class="category__button">Wild Life</a>
+          <a href="{% url 'category' 'Travel' %}" class="category__button">Travel</a>
+          <a href="{% url 'category' 'Science & Technology' %}" class="category__button">Science & Technology</a>
+          <a href="{% url 'category' 'Food' %}" class="category__button">Food</a>
+          <a href="{% url 'category' 'Music' %}" class="category__button">Music</a>
+          
         </div>
       </section>
       <!-- ==========================Category buttons End here================================ -->
+
+     
     </main>
     <!-- main html tag end -->
 
