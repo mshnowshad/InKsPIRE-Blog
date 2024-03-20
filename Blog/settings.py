@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [       
-    'admin_material.apps.AdminMaterialDashboardConfig',
+    'admin_soft.apps.AdminSoftDashboardConfig', #Admin panel
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
