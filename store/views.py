@@ -1,36 +1,27 @@
 from django.shortcuts import render, redirect
-from .forms import PostModelForm
-from .models import PostModel,Category
 from django.contrib import messages
 from django.db.models import Q
+from .models import PostModel, Category
+from .forms import PostModelForm
+from django.contrib.auth.models import User  # Import the User model
 
-
-
-# def search(request):
-#     categories = Category.objects.all()
-#     if request.method == 'POST':
-#         searched = request.POST['searched']
-#         #query the products model
-#         searched = Product.objects.filter(
-#                 Q(name__icontains=searched) | 
-#                 Q(description__icontains=searched) | 
-#                 Q(category__name__icontains=searched)
-#             )
+def search(request):
+    if request.method == 'POST':  # Corrected the case of 'POST'
+        searched = request.POST.get('searched')  # Corrected retrieving data from request
+        prods = PostModel.objects.filter(
+            Q(title__icontains=searched) |
+            Q(description__icontains=searched) |
+            Q(category__name__icontains=searched) |  # Added missing comma
+            Q(author__username__icontains=searched)  # Changed to username, adapt as needed
+        )
         
-      
-#         if not searched:
-#             messages.success(request,"Your searched product is doesn't exists ")
-#             return redirect('home')
-            
-        
-#         else:
-#             return render(request, 'search.html',{'searched':searched,'categories':categories})
-        
-#     else:
-        
-#         return render(request, 'search.html',{'categories':categories})
-
-
+        if not prods:
+            messages.success(request, "Hmm, Your Searched Item Isn't in Our Blog. Keep Scrolling for More!")  # Corrected error message
+            return redirect('blog')
+        else:
+            return render(request, 'store/search.html', {'searched': searched, 'prods': prods})
+    else:
+        return render(request, 'store/search.html')
 
 
 

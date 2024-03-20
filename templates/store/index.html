@@ -52,8 +52,8 @@
       
                 {% for message in messages %}
                 <div class="container">
-                <div class="alert__message error">
-                  <p>{{ message }}!</p>
+                <div id="alertMessage" class="alert__message error">
+                  <p style="color:rgb(255, 216, 0)">{{ message }}!</p>
                 </div>
                 </div>
                 {% endfor %}
@@ -101,7 +101,7 @@
       </section>
       <!-- ==========================Posts End here================================ -->
 
-<!-- <form class="d-flex" action="{% url 'search' %}" method="POST">
+<!-- <form class="d-flex" action="{% url 'blog' %}" method="POST">
     {% csrf_token %}
     <input class="form-control me-2" type="text" placeholder="Search"  name="searched">
     <button class="btn btn-outline-success" type="submit">Search</button>
@@ -116,13 +116,14 @@
            <center>
         <h1 style="font-size:2rem;font-family:Open Sans;margin-bottom: 3rem;">How can I help you today?</h1>
         </center>
-        <form action="{%url 'blog'%}" class="container search__bar-container">
-          <div>
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" name="" placeholder="Search" style="color:white;" />
-          </div>
-          <button type="submit" class="btn">Go</button>
-        </form>
+           <form action="{% url 'search' %}" method="POST" class="container search__bar-container">
+               {% csrf_token %}
+               <div>
+                   <i class="fa-solid fa-magnifying-glass"></i>
+                   <input type="text" name="searched" placeholder="Search" style="color:white;" />
+               </div>
+               <button type="submit" class="btn">Go</button>
+           </form>
       </div>
         <div class="container category__buttons-container">
           <a href="{% url 'category' 'Art' %}" class="category__button">Art</a>

@@ -1,11 +1,11 @@
 {% extends "link.html" %}
 {%load static %}
 
-    {% block content %}
-        {% include 'navbar.html' %}
+{% block content %}
+{% include 'navbar.html' %}
 
-        
-    <!-- main html tag start -->
+
+<!-- main html tag start -->
 
 <main>
     <section class="search__bar">
@@ -19,34 +19,51 @@
         </form>
     </section>
     <br />
+    <!-- there is messages -->
+    <div class="container">
+        <div class="alert__message error">
+            <center>
+                <p style="color:rgb(255, 106, 0); font-size:1.1rem;">Hunting for Treasures: {{ searched }} !</p>
+            </center>
+        </div>
+    </div>
+
+
 
     {% if messages %}
 
     {% for message in messages %}
     <div class="container">
-        <div id="alertMessage" class="alert__message error">
-            <p style="color:rgb(255, 216, 0)">{{ message }}!</p>
+        <div class="alert__message error">
+            <p>{{ message }}!</p>
         </div>
     </div>
     {% endfor %}
 
     {% endif %}
 
+
+
+
+
+
+    <!-- there is just a sample for setup -->
     <!-- ==========================Posts start here================================ -->
     <section class="posts">
         <div class="container posts__container">
-            {% for post in posts %}
+            {% if prods %}
+            {% for postt in prods %}
             <article class="post">
                 <div class="post__thumbnail">
-                    <img src=" {{ post.image.url }} " alt="" />
+                    <img src=" {{ postt.image.url }} " alt="" />
                 </div>
                 <div class="post__info">
-                    <a href="" class="category__button">{{post.category}}</a>
+                    <a href="" class="category__button">{{postt.category}}</a>
                     <h3 class="post__title">
-                        <a href="/">{{post.title|slice:':30'}} ...</a>
+                        <a href="/">{{postt.title|slice:':30'}} ...</a>
                     </h3>
                     <p class="post__body">
-                        {{post.description | slice:":120"}}
+                        {{postt.description | slice:":120"}}
                     </p>
                 </div>
                 <div class="post__author">
@@ -54,13 +71,20 @@
                         <img src="{%static 'images/Admin.jpg'%}" alt="" />
                     </div>
                     <div class="post__author-info">
-                        <h5>By: {{post.author.username}}</h5>
+                        <h5>By: {{postt.author.username}}</h5>
 
-                        <small>{{post.published_in}}</small>
+                        <small>{{postt.published_in}}</small>
                     </div>
                 </div>
             </article>
             {% endfor %}
+            {% else %}
+
+            <center>
+                <h2> Chose Other Category !</h2>
+            </center>
+
+            {% endif %}
 
         </div>
     </section>
@@ -78,5 +102,12 @@
     </section>
     <!-- ==========================Category buttons End here================================ -->
 </main>
-    <!-- main html tag end -->
-        {% endblock content %}
+<!-- main html tag end -->
+
+
+
+
+
+
+
+{% endblock content %}

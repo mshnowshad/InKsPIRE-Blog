@@ -11,6 +11,8 @@ urlpatterns = [
 	path('add_post/',views.add_post,name='add_post'),
 	path('category/<str:foo>',views.category,name="category"),
 	path('product/<int:pk>', views.product,name='product'),
+	path('search/',views.search,name='search'),
+    
 
 	# path('',home,name='home'),
 	# path('',home,name='home'),
