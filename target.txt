@@ -7,7 +7,7 @@
 
 ## product view (complete)
 
-## category wish
+## category wish  (complete)
 
 ## search opeation (complete)..
 
@@ -25,7 +25,7 @@
 #=================> youtube video <====================
 
 
-part = 6
+part = 7
 
 
 

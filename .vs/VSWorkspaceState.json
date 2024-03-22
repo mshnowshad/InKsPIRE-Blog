@@ -1,10 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Blog",
     "\\store",
-    "\\templates\\store"
+    "\\templates\\store",
+    "\\templates\\users"
   ],
-  "SelectedNode": "\\store\\admin.py",
+  "SelectedNode": "\\target.txt",
   "PreviewInSolutionExplorer": false
 }

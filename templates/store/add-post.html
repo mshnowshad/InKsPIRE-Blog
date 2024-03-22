@@ -5,31 +5,20 @@
 {% block content %}
     {% include 'navbar.html' %}
 
-  <!--   <main>
-      <section class="form__section">
-        <div class="container form__section-container">
-          <h1>Add Post</h1>
-          <br>
-          
-          <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form }}
-            <button type="submit" class="btn">Add Post</button>
-          </form>
-        </div>
-      </section>
-    </main>
- -->
-
-
 <!-- add_post.html -->
 <main>
   <section class="form__section">
     <div class="container form__section-container">
       <h2>Add Post</h2>
-      <div class="alert__message error">
+
+        <!-- ==== there is messages ======= -->
+      <!--<div class="alert__message error">
         <p>This is an error message</p>
-      </div>
+      </div>-->
+
+
+
+
       <form action="{% url 'add_post' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <h4>Title:</h4>

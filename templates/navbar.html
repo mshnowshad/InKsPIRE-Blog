@@ -22,7 +22,7 @@
                 <li><a href="#">Dashboard</a></li>
                 <li><a href="{%url 'add_post'%}">Post add</a></li>
 
-                <li><a href="#">Logout</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
               </ul>
             
 
@@ -31,8 +31,8 @@
                 <img src="{% static 'images/Admin.jpg' %}" />
               </div>
               <ul>
-                <li><a href="{%url 'signup'%}">SignUp</a></li>
-                <li><a href="{%url 'signin'%}">SignIn</a></li>
+                <li><a href="{%url 'sign_up'%}">SignUp</a></li>
+                <li><a href="{%url 'sign_in'%}">SignIn</a></li>
               </ul>
  {% endif %}
               

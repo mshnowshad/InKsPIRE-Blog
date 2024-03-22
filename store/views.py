@@ -2,8 +2,51 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.db.models import Q
 from .models import PostModel, Category
+
+
 from .forms import PostModelForm
 from django.contrib.auth.models import User  # Import the User model
+
+
+#signup
+from .forms import SignUpForm
+from django.contrib.auth import authenticate, login,logout
+
+
+
+
+def sign_in(request):
+	return render(request,'users/signin.html')
+
+
+#signup
+def sign_up(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, "Registered successfully!")
+            return redirect('home')
+        else:
+            messages.success(request,"whoops ! somw problem!")
+            return render(request, 'users/signup.html', {'form': form})
+    else:
+        form = SignUpForm()  # Initialize the form object
+        return render(request, 'users/signup.html', {'form': form})
+    
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('home')
+
+
+
+
 
 def search(request):
     if request.method == 'POST':  # Corrected the case of 'POST'
@@ -93,16 +136,6 @@ def service(request):
 
 
 
-
-def signin(request):
-	return render(request,'store/signin.html')
-
-
-
-
-
-def signup(request):
-	return render(request,'store/signup.html')
 
 
 def product(request,pk):
