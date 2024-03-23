@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\store",
-    "\\templates\\store",
+    "\\templates",
     "\\templates\\users"
   ],
-  "SelectedNode": "\\target.txt",
+  "SelectedNode": "\\store\\urls.py",
   "PreviewInSolutionExplorer": false
 }

@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.db.models import Q
@@ -42,7 +43,7 @@ def sign_up(request):
 
 def logout_user(request):
     logout(request)
-    return redirect('home')
+    return render(request, 'users/logout.html')
 
 
 

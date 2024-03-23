@@ -1,6 +1,9 @@
+﻿
 from django.urls import path
 from .import views
 
+#video number 7
+from django.contrib.auth import views as auth_view   # এই মডিউলটি ক্লাস-ভিত্তিক ভিউ (ডিজাঙ্গো ১.১১ এ প্রবর্তিত) লগইন, লগআউট, পাসওয়ার্ড রিসেট এবং পাসওয়ার্ড পরিবর্তন করার মতো সাধারণ প্রামাণীকরণ টাস্কগুলি
 
 
 urlpatterns = [
@@ -15,10 +18,10 @@ urlpatterns = [
 	path('search/',views.search,name='search'),
     
 	path('signup/',views.sign_up,name='sign_up'),
-	path('signin/',views.sign_in,name='sign_in'),
-	path('signin/',views.sign_in,name='signin'),
     
-	path('logout',views.logout_user,name="logout")
+	path('signin/',auth_view.LoginView.as_view(template_name="users/signin.html"),name="sign_in"),
+    
+	path('logout/',views.logout_user,name="logout")
     
     
 	# path('',home,name='home'),

@@ -1,4 +1,4 @@
-===================== add post =====================================
+﻿===================== add post =====================================
 
 
 ###### add-post.html
@@ -100,6 +100,114 @@ def add_post(request):
         form = PostModelForm()
 
     return render(request, 'store/add-post.html', {'form': form})
+
+
+
+
+
+
+
+<<<===================== SignUp for blog =====================================>>>>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<<<===================== login for blog =====================================>>>>
+
+#### urls.py   <===========
+
+
+from django.urls import path
+from .import views
+
+# this for login
+from django.contrib.auth import views as auth_view   # এই মডিউলটি ক্লাস-ভিত্তিক ভিউ (ডিজাঙ্গো ১.১১ এ প্রবর্তিত) লগইন, লগআউট, পাসওয়ার্ড রিসেট এবং পাসওয়ার্ড পরিবর্তন করার মতো সাধারণ প্রামাণীকরণ টাস্কগুলি
+
+
+urlpatterns = [
+	path('',views.home,name='home'),
+
+	path('signup/',views.sign_up,name='sign_up'),
+    
+	path('signin/',auth_view.LoginView.as_view(template_name="users/signin.html"),name="sign_in"),
+
+]
+
+
+
+
+#### settings.py   <===========
+
+
+#for login
+LOGIN_REDIRECT_URL = "home"
+
+
+
+
+
+
+#### signin.html  <===========
+
+
+<form method="POST">
+            {% csrf_token %}
+
+            <h4>Username :</h4>
+            {{ form.username }}
+            <h4>Password :</h4>
+
+            {{ form.password }}
+            <button style="margin-top:1rem;" type="submit" class="btn" value="Login">Sign In</button>
+            <small>
+                Already have an account? <a href="{% url 'sign_up' %}">Sign Up</a><br />
+                <a href="{%url 'home'%}">Back home</a>
+            </small>
+</form>
+
+
+
+
+
+
+
+
+
+<<<===================== logout for blog =====================================>>>>
+
+#### urls.py   <===========
+
+
+from django.urls import path
+from .import views
+
+# this for login
+from django.contrib.auth import views as auth_view   # এই মডিউলটি ক্লাস-ভিত্তিক ভিউ (ডিজাঙ্গো ১.১১ এ প্রবর্তিত) লগইন, লগআউট, পাসওয়ার্ড রিসেট এবং পাসওয়ার্ড পরিবর্তন করার মতো সাধারণ প্রামাণীকরণ টাস্কগুলি
+
+
+urlpatterns = [
+	path('',views.home,name='home'),
+
+    path('logout/',views.logout_user,name="logout")
+]
+
+
+
+
+#### views.py   <===========
+
+def logout_user(request):
+    logout(request)
+    return render(request, 'users/logout.html')
 
 
 

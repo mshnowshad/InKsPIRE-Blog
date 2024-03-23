@@ -11,6 +11,8 @@
 
 ## search opeation (complete)..
 
+## Blog signup , login and logout ....
+
 ## user profile  
 
 ## user delete post
