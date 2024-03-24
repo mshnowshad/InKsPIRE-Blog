@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\store",
-    "\\templates",
-    "\\templates\\users"
+    "\\templates\\store"
   ],
-  "SelectedNode": "\\store\\urls.py",
+  "SelectedNode": "\\store\\views.py",
   "PreviewInSolutionExplorer": false
 }

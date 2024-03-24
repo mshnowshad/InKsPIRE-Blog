@@ -10,13 +10,14 @@
       
       </section>
 <div class="search__bar">
-      <form action="#" class="container search__bar-container">
-          <div>
+    <form action="{% url 'search' %}" method="POST" class="container search__bar-container">
+        {% csrf_token %}
+        <div>
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" name="" placeholder="Search" style="color:white;" />
-          </div>
-          <button type="submit" class="btn">Go</button>
-        </form>
+            <input type="text" name="searched" placeholder="Search" style="color:white;" />
+        </div>
+        <button type="submit" class="btn">Go</button>
+    </form>
        </div>
 
       <!-- ==========================Posts start here================================ -->

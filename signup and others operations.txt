@@ -1,112 +1,4 @@
-﻿===================== add post =====================================
-
-
-###### add-post.html
-
-
-      <form action="{% url 'add_post' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <h4>Title:</h4>
-        {{ form.title }}
-        <h4>Descriptions :</h4>
-
-        {{ form.description }}
-        <h4>Category :</h4>
-        
-        {{ form.category }}
-        
-        
-        <div class="form__control">
-          <label for="thumbnail">Add Thumbnail</label>
-          {{ form.image }}
-        </div>
-        <button type="submit" class="btn">Add Post</button>
-      </form>
-
-
-
-
-
-
-########## navbar.html
-
-
-
- {% if user.is_authenticated %}
-              <div class="avatar">
-                <img src="{% static 'images/Admin.jpg' %}" />
-              </div>
-              <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="{%url 'add_post'%}">Post add</a></li>
-
-                <li><a href="#">Logout</a></li>
-              </ul>
-            
-
- {% else %}
-              <div class="avatar">
-                <img src="{% static 'images/Admin.jpg' %}" />
-              </div>
-              <ul>
-                <li><a href="{%url 'sign_up'%}">SignUp</a></li>
-                <li><a href="{%url 'sign_in'%}">SignIn</a></li>
-              </ul>
- {% endif %}
-
-
-
-
-
-#### forms.py
-
-from django import forms
-from .models import PostModel <--there is import PostModel
-
-
-
-class PostModelForm(forms.ModelForm):
-
-	description = forms.CharField(widget=forms.Textarea(attrs={'rows':3}))
-	class Meta:
-		model = PostModel
-		fields = ('title','description','category','image')
-
-
-
-#### views.py
-
-
- 
-from .forms import PostModelForm
-from django.contrib.auth.models import User  # Import the User model
-from django.contrib.auth import authenticate
-
- 
-
-def add_post(request):
-    if request.method == 'POST':
-        form = PostModelForm(request.POST,request.FILES)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            if request.user.is_authenticated:  # Debug statement
-                instance.author = request.user
-                instance.save()
-                messages.success(request, 'Post added successfully')
-                return redirect('home')
-            else:
-                return redirect('signin')  # Debug statement
-    else:
-        form = PostModelForm()
-
-    return render(request, 'store/add-post.html', {'form': form})
-
-
-
-
-
-
-
+﻿
 <<<===================== SignUp for blog ========================================================================================>>>>
 
 
@@ -264,6 +156,14 @@ class SignUpForm(UserCreationForm):
 
 
 
+
+
+
+
+
+
+
+
 <<<===================== login for blog =====================================>>>>
 
 #### urls.py   <===========
@@ -310,9 +210,7 @@ LOGIN_REDIRECT_URL = "home"
             <h4>Password :</h4>
 
             {{ form.password }}
-
             <button style="margin-top:1rem;" type="submit" class="btn" value="Login">Sign In</button>
-
             <small>
                 Already have an account? <a href="{% url 'sign_up' %}">Sign Up</a><br />
                 <a href="{%url 'home'%}">Back home</a>
@@ -359,4 +257,3 @@ def logout_user(request):
 
 
 <<<===================== Forgeten password of user =====================================>>>>
-

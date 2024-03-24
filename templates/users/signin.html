@@ -7,7 +7,7 @@
 <section class="form__section">
     <div class="container form__section-container">
         <center>
-            <a href="{% url 'sign_in' %}">
+            <a href="{% url 'home' %}">
                 <h2 style="font-family: cursive; font-size:2.3rem;">Sign In</h2>
             </a>
         </center>
@@ -31,10 +31,16 @@
             <h4>Password :</h4>
 
             {{ form.password }}
-            <button style="margin-top:1rem;" type="submit" class="btn" value="Login">Sign In</button>
+
+            
+            <button style="margin-top:.2rem;font-size:.9rem;" type="submit" class="btn center" value="Login">Sign In</button>
+            
+
             <small>
-                Already have an account? <a href="{% url 'sign_up' %}">Sign Up</a><br />
-                <a href="{%url 'home'%}">Back home</a>
+                 Forget you password? <a href="{%url 'sign_in'%}">Reset password</a>
+                <br/>
+              
+                Ready to Begin? Click Below to Sign Up <a href="{% url 'sign_up' %}">Sign Up</a>
             </small>
         </form>
     </div>

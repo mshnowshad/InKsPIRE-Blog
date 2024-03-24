@@ -16,12 +16,16 @@ urlpatterns = [
 	path('category/<str:foo>',views.category,name="category"),
 	path('product/<int:pk>', views.product,name='product'),
 	path('search/',views.search,name='search'),
+	path('profile/',views.profile,name='profile'),
     
+    
+	#for an users
 	path('signup/',views.sign_up,name='sign_up'),
     
 	path('signin/',auth_view.LoginView.as_view(template_name="users/signin.html"),name="sign_in"),
     
-	path('logout/',views.logout_user,name="logout")
+    
+	path('logout/',views.logout_user,name="logout"),
     
     
 	# path('',home,name='home'),

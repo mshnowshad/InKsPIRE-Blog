@@ -21,17 +21,25 @@
           <div class="post__info">
             <a href="#" class="category__button">Wild Life</a>
             <h2 class="post__title">
-              <a href="post.html"
+              <a href="{% url 'blog'%}"
                 >Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Perspiciatis, ullam.</a
               >
             </h2>
-            <p class="post__body">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              inventore quas earum nesciunt exercitationem corporis atque
-              asperiores officiis vitae minima aliquam alias excepturi
-              blanditiis sunt reiciendis, id hic unde. Aliquid!
-            </p>
+            <p class="post__body" align="justify">
+                Blogs have become an integral part of the digital landscape, offering a platform for individuals,
+                businesses, and organizations to share their thoughts, expertise, and experiences with the world. 
+                In the vast expanse of the internet, blogs serve as personal diaries, professional portfolios, 
+                informational resources, and even hubs for niche communities. They offer a unique blend of creativity,
+                expression, and information dissemination, allowing writers to connect with audiences across the globe on a multitude of topics.
+
+                At their core, blogs are dynamic entities, 
+                constantly evolving with the interests and passions of their creators.
+                They provide a space for individuals to express themselves freely,
+                whether it's through personal anecdotes, insightful commentary, 
+                or detailed analysis. Unlike traditional media outlets, 
+                blogs offer a level of immediacy and authenticity that resonates with readers seeking genuine, unfiltered content. 
+</p>
             <div class="post__author">
               <div class="post__author-avatar">
                 <img src="{%static 'images/Admin.jpg'%}" alt="" />
@@ -140,6 +148,6 @@
      
     </main>
     <!-- main html tag end -->
-
+{% include 'footer.html'%}
 
     {% endblock content %}

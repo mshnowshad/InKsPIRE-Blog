@@ -92,12 +92,12 @@
     <!-- ==========================Category buttons start here================================ -->
     <section class="category__buttons">
         <div class="container category__buttons-container">
-            <a href="" class="category__button">Art</a>
-            <a href="" class="category__button">Wild Life</a>
-            <a href="" class="category__button">Travel</a>
-            <a href="" class="category__button">Science & Technology</a>
-            <a href="" class="category__button">Food</a>
-            <a href="" class="category__button">Music</a>
+            <a href="{% url 'category' 'Art' %}" class="category__button">Art</a>
+            <a href="{% url 'category' 'Wild Lifes' %}" class="category__button">Wild Life</a>
+            <a href="{% url 'category' 'Travel' %}" class="category__button">Travel</a>
+            <a href="{% url 'category' 'Science & Technology' %}" class="category__button">Science & Technology</a>
+            <a href="{% url 'category' 'Food' %}" class="category__button">Food</a>
+            <a href="{% url 'category' 'Music' %}" class="category__button">Music</a>
         </div>
     </section>
     <!-- ==========================Category buttons End here================================ -->

@@ -41,9 +41,9 @@
                     <img src=" {{ post.image.url }} " alt="" />
                 </div>
                 <div class="post__info">
-                    <a href="" class="category__button">{{post.category}}</a>
+                    <a href="{% url 'category' 'post.category' %}" class="category__button">{{post.category}}</a>
                     <h3 class="post__title">
-                        <a href="/">{{post.title|slice:':30'}} ...</a>
+                        <a href="{%url 'product' post.id %}">{{post.title|slice:':36'}} ...</a>
                     </h3>
                     <p class="post__body">
                         {{post.description | slice:":120"}}
@@ -54,8 +54,7 @@
                         <img src="{%static 'images/Admin.jpg'%}" alt="" />
                     </div>
                     <div class="post__author-info">
-                        <h5>By: {{post.author.username}}</h5>
-
+                        <h5>By: Dr.Dre</h5>
                         <small>{{post.published_in}}</small>
                     </div>
                 </div>
@@ -68,15 +67,18 @@
     <!-- ==========================Category buttons start here================================ -->
     <section class="category__buttons">
         <div class="container category__buttons-container">
-            <a href="" class="category__button">Art</a>
-            <a href="" class="category__button">Wild Life</a>
-            <a href="" class="category__button">Travel</a>
-            <a href="" class="category__button">Science & Technology</a>
-            <a href="" class="category__button">Food</a>
-            <a href="" class="category__button">Music</a>
+            <a href="{% url 'category' 'Art' %}" class="category__button">Art</a>
+            <a href="{% url 'category' 'Wild Lifes' %}" class="category__button">Wild Life</a>
+            <a href="{% url 'category' 'Travel' %}" class="category__button">Travel</a>
+            <a href="{% url 'category' 'Science & Technology' %}" class="category__button">Science & Technology</a>
+            <a href="{% url 'category' 'Food' %}" class="category__button">Food</a>
+            <a href="{% url 'category' 'Music' %}" class="category__button">Music</a>
         </div>
     </section>
     <!-- ==========================Category buttons End here================================ -->
 </main>
     <!-- main html tag end -->
+
+
+{% include 'footer.html'%}
         {% endblock content %}

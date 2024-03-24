@@ -11,7 +11,7 @@
 
 ## search opeation (complete)..
 
-## Blog signup , login and logout ....
+## Blog signup , login and logout (complete)
 
 ## user profile  
 
@@ -27,7 +27,7 @@
 #=================> youtube video <====================
 
 
-part = 7
+part = 8
 
 
 
