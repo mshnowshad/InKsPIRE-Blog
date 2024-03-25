@@ -14,8 +14,20 @@ from .forms import SignUpForm
 from django.contrib.auth import authenticate, login,logout
 
 
+
+
+
+def update_info(request):
+    return render(request,'users/Editinfo.html') 
+
+
+
 def profile(request):
     return render(request,'users/profile.html') 
+
+
+
+
 
 def sign_in(request):
 	return render(request,'users/signin.html')

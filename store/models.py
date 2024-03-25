@@ -1,10 +1,9 @@
 from django.db import models
 import datetime
 from django.utils import timezone
+#day 8 | profile
 from django.contrib.auth.models import User
-
-
-
+from django.core.validators import FileExtensionValidator
 
 
 
@@ -34,5 +33,16 @@ class PostModel(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+
+
+class ProfileModel(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE) 
+    image = models.ImageField(default='default.jpg',upload_to='profileImg/',validators=[FileExtensionValidator(['png','jpg'])])
+    
+    def __str__(self):
+      return self.user.username
+      
 
 

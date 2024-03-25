@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PostModel,Category
+from .models import PostModel,Category,ProfileModel
 
 class PostModelAdmin(admin.ModelAdmin):
     list_display = ('id','author', 'title','category', 'published_in')  # Add 'id' here
@@ -9,6 +9,8 @@ class PostModelAdmin(admin.ModelAdmin):
 
 admin.site.register(PostModel, PostModelAdmin)
 admin.site.register(Category)
+admin.site.register(ProfileModel)
+
 
 
 

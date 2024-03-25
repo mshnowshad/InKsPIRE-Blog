@@ -1,0 +1,38 @@
+{% extends "link.html" %}
+{%load static %}
+{% block content %}
+
+{% include 'navbar.html'%}
+
+<section class="form__section">
+    <div class="container form__section-container">
+        <center>
+            <h2>Updat Personal Information</h2>
+        </center>
+        <div class="alert__message success">
+            <p>Are you Cancel your Updating Info! <a href="{%url 'profile'%}">Cancel!</a></p>
+        </div>
+        <form action="">
+            <input type="text" placeholder="Username" />
+            <input type="text" placeholder="Username" />
+            <input type="text" placeholder="Username" />
+            <input type="text" placeholder="Username" />
+            <input type="text" placeholder="Username" />
+            <input type="text" placeholder="Username" />
+            <button type="submit" class="btn">Done</button>
+
+
+
+        </form>
+    </div>
+</section>
+
+
+
+
+
+        {% endblock content %}
+
+
+
+

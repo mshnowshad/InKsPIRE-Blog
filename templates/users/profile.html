@@ -16,26 +16,26 @@
     <div class="container featured__container">
 
         <div class="post__thumbnail">
-            <img src="{%static 'images/blog1.jpg'%}" alt="profile-img" />
+            <img class="img-thumbnail" src="{{user.profilemodel.image.url}}" alt="profile-img" />
         </div>
         <div class="post__info">
-            <a href="#" style="margin-bottom:1rem; margin-right:.3rem;" class="category__button">rate of users</a>
-            <a href="#" style="margin-bottom: 1rem; margin-right: .3rem;" class="category__button">Edit info</a>
+            
+            <a href="{% url 'editinfo'%}" style="margin-bottom: 1rem; margin-right: .3rem;" class="category__button">Edit info</a>
             <a href="#" style="margin-bottom: 1rem; margin-right: .3rem;" class="category__button">Change password</a>
 
             <h2 class="post__title" style="margin-bottom:1rem;">
-
-                Lorem ipsum dolor,
+                
+                {{ user.first_name }}  {{ user.last_name  }}
 
             </h2>
             <h3 class="post__title" style="margin-bottom:1rem;">
 
-                Email of users
+              {{ user.email }}
 
             </h3>
             <h3 class="post__title" style="margin-bottom:1rem;">
 
-                Phone number of users
+                {{user.username}}
 
             </h3>
             <h3 class="post__title" style="margin-bottom:1rem;">

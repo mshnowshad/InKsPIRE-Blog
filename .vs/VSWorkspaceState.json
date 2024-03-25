@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\store",
-    "\\templates\\store"
+    "\\templates",
+    "\\templates\\store",
+    "\\templates\\users"
   ],
-  "SelectedNode": "\\store\\views.py",
+  "SelectedNode": "\\templates\\navbar.html",
   "PreviewInSolutionExplorer": false
 }

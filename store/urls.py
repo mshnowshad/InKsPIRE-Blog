@@ -16,6 +16,7 @@ urlpatterns = [
 	path('category/<str:foo>',views.category,name="category"),
 	path('product/<int:pk>', views.product,name='product'),
 	path('search/',views.search,name='search'),
+    
 	path('profile/',views.profile,name='profile'),
     
     
@@ -26,6 +27,9 @@ urlpatterns = [
     
     
 	path('logout/',views.logout_user,name="logout"),
+	path('editinfo/',views.update_info,name="editinfo"),
+    
+    
     
     
 	# path('',home,name='home'),
