@@ -27,16 +27,10 @@ urlpatterns = [
     
     
 	path('logout/',views.logout_user,name="logout"),
+    
 	path('editinfo/',views.update_info,name="editinfo"),
     
     
-    
-    
-	# path('',home,name='home'),
-	# path('',home,name='home'),
-
-	
-
 
 
 ]

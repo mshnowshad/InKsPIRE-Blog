@@ -13,7 +13,7 @@
 
 ## Blog signup , login and logout (complete)
 
-## user profile  
+## user profile (running) 
 
 ## user delete post
 
@@ -27,7 +27,7 @@
 #=================> youtube video <====================
 
 
-part = 8
+part = 9
 
 
 

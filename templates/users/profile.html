@@ -16,14 +16,14 @@
     <div class="container featured__container">
 
         <div class="post__thumbnail">
-            <img class="img-thumbnail" src="{{user.profilemodel.image.url}}" alt="profile-img" />
+            <img src="{{user.profilemodel.image.url}}" alt="profile-img" />
         </div>
         <div class="post__info">
             
             <a href="{% url 'editinfo'%}" style="margin-bottom: 1rem; margin-right: .3rem;" class="category__button">Edit info</a>
             <a href="#" style="margin-bottom: 1rem; margin-right: .3rem;" class="category__button">Change password</a>
 
-            <h2 class="post__title" style="margin-bottom:1rem;">
+            <h2 class="post__title" style="margin-bottom:11rem;">
                 
                 {{ user.first_name }}  {{ user.last_name  }}
 
