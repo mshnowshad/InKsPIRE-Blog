@@ -484,3 +484,110 @@ class StoreConfig(AppConfig):
 
 
 
+
+
+
+
+<<<===================== User update Profile Info =====================================>>>>
+
+
+
+#### forms.py   <===========
+
+
+from dataclasses import fields
+from django import forms
+from .models import PostModel
+
+#update Informations of an user
+from .models import ProfileModel
+
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
+
+
+class UserUpdateForm(forms.ModelForm):
+	class Meta:
+		model = User
+		fields = ['first_name','last_name','username','email']
+		
+	def __init__(self, *args, **kwargs):
+		super(UserUpdateForm,self).__init__(*args, **kwargs)
+		
+		for fieldname in ['username','email']:
+			self.fields[fieldname].help_text = None
+
+class ProfileUpdateForm(forms.ModelForm):
+	class Meta:
+		model = ProfileModel
+		fields = ['image']
+		
+
+
+
+
+
+#### views.py   <===========
+
+
+
+def update_info(request):
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST or None, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST or None, request.FILES or None,instance=request.user.profilemodel)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, "Your personal info update successfully!")
+            return redirect('profile')
+            
+
+    else:
+        u_form =  UserUpdateForm( instance=request.user)
+        p_form = ProfileUpdateForm( instance=request.user.profilemodel)
+
+
+    context = {
+        'u_form':u_form,
+        'p_form':p_form,
+        
+    }
+    return render(request,'users/Editinfo.html',context) 
+
+
+
+
+
+
+#### html page   <===========
+
+
+<section class="form__section">
+    <div class="container form__section-container">
+        <center>
+            <h2>Updat Personal Information</h2>
+        </center>
+        <div class="alert__message success">
+            <p>Are you Cancel your Updating Info! <a href="{%url 'profile'%}">Cancel!</a></p>
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="thumbnail">Add First Name</label>
+            {{ u_form.first_name }}
+            <label for="thumbnail">Add Last Name</label>
+            {{ u_form.last_name }}
+            <label for="thumbnail">Add Username</label>
+            {{ u_form.username}}
+            <label for="thumbnail">Add Email</label>
+            {{ u_form.email}}
+
+            {{ p_form.image}}
+            <button type="submit" class="btn">Done</button>
+        </form>
+    </div>
+</section>
+
+
+
+

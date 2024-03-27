@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\store",
+    "\\templates",
     "\\templates\\users"
   ],
-  "SelectedNode": "\\signup and others operations.txt",
+  "SelectedNode": "\\store\\forms.py",
   "PreviewInSolutionExplorer": false
 }

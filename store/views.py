@@ -1,16 +1,15 @@
 
+from urllib.request import Request
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.db.models import Q
+from django.urls import is_valid_path
 from .models import PostModel, Category
-
-
-from .forms import PostModelForm
 from django.contrib.auth.models import User  # Import the User model
 
 
 #signup
-from .forms import SignUpForm
+from .forms import PostModelForm,SignUpForm,UserUpdateForm,ProfileUpdateForm
 from django.contrib.auth import authenticate, login,logout
 
 
@@ -18,7 +17,27 @@ from django.contrib.auth import authenticate, login,logout
 
 
 def update_info(request):
-    return render(request,'users/Editinfo.html') 
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST or None, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST or None, request.FILES or None,instance=request.user.profilemodel)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, "Your personal info update successfully!")
+            return redirect('profile')
+            
+
+    else:
+        u_form =  UserUpdateForm( instance=request.user)
+        p_form = ProfileUpdateForm( instance=request.user.profilemodel)
+
+
+    context = {
+        'u_form':u_form,
+        'p_form':p_form,
+        
+    }
+    return render(request,'users/Editinfo.html',context) 
 
 
 
